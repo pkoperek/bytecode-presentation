@@ -286,25 +286,23 @@ a:focus {
     top: 25%;
 }
 
-#mark-default-ctor {
+.mark {
     display: block;
     background-image: url("../img/mark.png");
-    width: 100%;
-    height: 200px;
     background-size: 100% 100%;
     position: relative;
-    top: 15%;
     opacity: 0.25;
 }
 
+#mark-default-ctor {
+    width: 100%;
+    height: 200px;
+    top: 15%;
+}
+
 #mark-aload0 {
-    display: block;
     width: 200px;
     height: 100px;
-    background-image: url("../img/mark.png");
-    background-size: 100% 100%;
-    opacity: 0.25;
-    position: relative;
     top: 25%;
     left: 10%;
 }
