@@ -10,7 +10,9 @@ function registerListeners() {
                     break;    
                 }
 
-                prev = steps[i];
+                if ( steps[i].classList.contains('slide') ) {
+                    prev = steps[i];
+                }
             }
 
             prev.classList.add('overlay-bd');
