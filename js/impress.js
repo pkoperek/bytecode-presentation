@@ -282,6 +282,12 @@
                 lastEntered = step;
             }
         };
+
+        var onStepWillEnter = function (step) {
+            if (lastEntered !== step) {
+                triggerEvent(step, "impress:stepwillenter");
+            }
+        };
         
         // `onStepLeave` is called whenever the step element is left
         // but the event is triggered only if the step is the same as
@@ -389,7 +395,7 @@
             // get and init steps
             steps = $$(".step", root);
             steps.forEach( initStep );
-            
+
             // set a default initial state of the canvas
             currentState = {
                 translate: { x: 0, y: 0, z: 0 },
@@ -484,8 +490,9 @@
             // trigger leave of currently active element (if it's not the same step again)
             if (activeStep && activeStep !== el) {
                 onStepLeave(activeStep);
+                onStepWillEnter(el);
             }
-            
+
             // Now we alter transforms of `root` and `canvas` to trigger transitions.
             //
             // And here is why there are two elements: `root` and `canvas` - they are
