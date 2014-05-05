@@ -7,6 +7,11 @@
     src: url('../img/PressStart2P.ttf');
 }
 
+@font-face{
+    font-family: Graziano;
+    src: url('../img/Graziano.ttf');
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -150,6 +155,7 @@ a:focus {
 }
 
 .title_author{
+    font-family: Graziano;
     font-size: 25px;
     position: absolute;
     bottom: 40px;
@@ -169,6 +175,36 @@ a:focus {
     -ms-transform:     translateY(-5px);
     -o-transform:      translateY(-5px);
     transform:         translateY(-5px);       
+}
+
+.title_author .author {
+     display: inline-block;
+    -webkit-transform: translateY(25px);
+    -moz-transform:    translateY(25px);
+    -ms-transform:     translateY(25px);
+    -o-transform:      translateY(25px);
+    transform:         translateY(25px);
+}
+
+.title_author .slash {
+    font-size: 70px;    
+    
+     display: inline-block;
+    -webkit-transform: translateY(35px);
+    -moz-transform:    translateY(35px);
+    -ms-transform:     translateY(35px);
+    -o-transform:      translateY(35px);
+    transform:         translateY(35px);
+
+}
+
+.title_author .date {
+    display: inline-block;
+    -webkit-transform: translateY(10px);
+    -moz-transform:    translateY(10px);
+    -ms-transform:     translateY(10px);
+    -o-transform:      translateY(10px);
+    transform:         translateY(10px);  
 }
 
 .aletter {
