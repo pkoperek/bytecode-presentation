@@ -40,6 +40,7 @@
                     <a href="http://jruby.org/">jruby</a>)
                 </li>
                 <li>new cool tools (<a href="http://zeroturnaround.com/software/jrebel">jrebel</a>)
+                <li>static analysis</li>
             </ul>
         </div>
     </div>
@@ -66,7 +67,7 @@
     <div id="example-bytecode" class="step slide" data-x="0" data-y="-2000">
         <div class="slide-content">
             <div class="sh-cmd">
-                $ javap -c HelloWorld
+                $ javap -c HelloWorld.class
             </div>
 
 <div class="src-java">
@@ -98,8 +99,8 @@
     <div id="example-bytecode-aload0" class="step overlay" data-x="0" data-y="-2000">
         <div id="mark-aload0" class="mark"></div> 
 
-        <div id="stack-oriented-quote">
-            "The Java Virtual Machine is stack-oriented, with most operations taking one or more operands from the operand stack of the Java Virtual Machine's current frame or pushing results back onto the opera    nd stack."
+        <div id="frame-quote" class="quote">
+            loads "this" on stack
         </div>
     </div>
     
@@ -125,16 +126,35 @@
 </div>    
 -->
 
-    <div id="sources" class="step" data-x="1000" data-y="0">
+    <div id="good-practises" class="step slide" data-x="1000" data-y="-2000">
+        <div class="slide-header">
+            good practises
+        </div>
+
+        <div class="slide-content">
+            <ul class="lv0_indent">
+                <li>when possible - use higher level libraries (<em>cglib</em>)</li>
+                <li>don't write all of ASM code by yourself: write it in pure Java and use <em>javap</em> or <em>ASMifier</em></li>
+                <li>write as much as possible in Java and only invoke methods in instrumentation code</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="sources" class="step" data-x="1000" data-y="-1000">
         <div class="slide-header">
             sources
         </div>
 
         <div class="slide-content">
-            <ul>
+            <ul class="lv0_indent">
                 <li><a href="http://docs.oracle.com/javase/specs/jvms/se7/html/">JVM specification</a></li>
+                <li><a href="http://blog.jamesdbloom.com/JVMInternals.html">JVM internals by James Bloom</a></li>
             </ul>
         </div>
+    </div>
+
+    <div id="thanks" class="step slide" data-x="1000" data-y="0">
+        <div class="ex-title">thanks!</div>
     </div>
 
 </div>

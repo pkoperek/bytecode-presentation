@@ -307,6 +307,16 @@ a:focus {
     left: 10%;
 }
 
+.quote {
+    font-size: 20pt;
+    display: block;
+    position: absolute;
+    width: 500px;
+    right: 10%;
+    top: 25%;
+    color: black;
+}
+
 .hint {
     display: none;
 
