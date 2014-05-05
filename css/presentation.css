@@ -1,9 +1,5 @@
 /*
-    We start with a good ol' reset.
-    That's the one by Eric Meyer http://meyerweb.com/eric/tools/css/reset/
-
-    You can probably argue if it is needed here, or not, but for sure it
-    doesn't do any harm and gives us a fresh start.
+    based on impress.js demo
 */
 
 html, body, div, span, applet, object, iframe,
@@ -27,7 +23,6 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
@@ -52,24 +47,11 @@ table {
     border-spacing: 0;
 }
 
-/*
-    Now here is when interesting things start to appear.
-
-    We set up <body> styles with default font and nice gradient in the background.
-    And yes, there is a lot of repetition there because of -prefixes but we don't
-    want to leave anybody behind.
-*/
 body {
     font-family: 'PT Sans', sans-serif;
     min-height: 740px;
 
-    background: rgb(220,228,231);
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
-    background: -webkit-radial-gradient(rgb(248, 248, 248), rgb(220, 228, 231));
-    background:    -moz-radial-gradient(rgb(248, 248, 248), rgb(220, 228, 231));
-    background:     -ms-radial-gradient(rgb(248, 248, 248), rgb(220, 228, 231));
-    background:      -o-radial-gradient(rgb(248, 248, 248), rgb(220, 228, 231));
-    background:         radial-gradient(rgb(248, 248, 248), rgb(220, 228, 231));
+    background-image:url("../img/paper_fibers.png");
 }
 
 /*
@@ -101,18 +83,6 @@ a:focus {
     background: rgba(255,255,255,1);
     text-shadow: -1px -1px 2px rgba(100,100,100,0.5);
 }
-
-/*
-    Because the main point behind the impress.js demo is to demo impress.js
-    we display a fallback message for users with browsers that don't support
-    all the features required by it.
-
-    All of the content will be still fully accessible for them, but I want
-    them to know that they are missing something - that's what the demo is
-    about, isn't it?
-
-    And then we hide the message, when support is detected in the browser.
-*/
 
 .fallback-message {
     font-family: sans-serif;
@@ -167,6 +137,11 @@ a:focus {
     margin: 0;
     opacity: 0.3;
 
+    color: rgb(102, 102, 102);
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+
+    font-family: 'Open Sans', Arial, sans-serif;
+ 
     -webkit-transition: opacity 1s;
     -moz-transition:    opacity 1s;
     -ms-transition:     opacity 1s;
@@ -176,25 +151,21 @@ a:focus {
 
 .impress-enabled .step.active { opacity: 1 }
 
-/*
-    These 'slide' step styles were heavily inspired by HTML5 Slides:
-    http://html5slides.googlecode.com/svn/trunk/styles.css
+.impress-enabled .step:not(.active){
+        opacity: 0
+}
 
-    ;)
 
-    They cover everything what you see on first three steps of the demo.
-*/
+.lv0_indent {
+    margin-left: 30px;
+}
+
 .slide {
     display: block;
 
     width: 900px;
     height: 700px;
     padding: 40px 60px;
-
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, .3);
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
 
     color: rgb(102, 102, 102);
     text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
