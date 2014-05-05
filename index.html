@@ -27,8 +27,8 @@
         <div class="title_author"><span class="date">05.2014</span><span class="slash">/</span><span class="author">Pawel Koperek</span></div>
     </div>
 
-    <div id="why" class="step" data-x="0" data-y="-1000">
-        <div class="slide-header" >why?</div>
+    <div id="why" class="step slide" data-x="0" data-y="-1000">
+        <div class="slide-header">why?</div>
 
         <div class="slide-content">
             <ul class="lv0_indent">
@@ -44,50 +44,50 @@
         </div>
     </div>
 
-    <div id="example-title" class="step" data-x="0" data-y="-2000">
-        <div class="title">example</div>
+    <div id="example-title" class="step slide" data-x="0" data-y="-2000">
+        <div class="ex-title">example</div>
     </div>
 
-    <div id="example-src" class="step" data-x="0" data-y="-2000">
+    <div id="example-src" class="step slide" data-x="0" data-y="-2000">
         <div class="slide-content">
             <div class="src-java">
-            <pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">HelloWorld</span> {
-                <span style="color:#a57800">public</span> <span style="color:#a57800">static</span> <span style="color:#073642;">void</span> <span style="color:#268bd2">main</span>(<span style="color:#073642">String</span>[] args) {
-                        <span style="color:#073642">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>Woohoo!<span style="color:#c60000">"</span></span>);
-                    }
-}
-                </pre>
+<pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">HelloWorld</span> {
+    <span style="color:#a57800">public</span> <span style="color:#a57800">static</span> <span style="color:#073642;">void</span> <span style="color:#268bd2">main</span>(<span style="color:#073642">String</span>[] args) {
+        <span style="color:#073642">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>Woohoo!<span style="color:#c60000">"</span></span>);
+    }
+}</pre>
             </div>
-
             <div class="sh-cmd">
-                javac HelloWorld.java
+                $ javac HelloWorld.java
             </div>
         </div>
     </div>
    
-    <div id="example-bytecode" class="step" data-x="0" data-y="-2000">
-        <div class="slide-title sh-cmd">
-            javap -c HelloWorld
-        </div>
+    <div id="example-bytecode" class="step slide" data-x="0" data-y="-2000">
+        <div class="slide-content">
+            <div class="sh-cmd">
+                $ javap -c HelloWorld
+            </div>
 
-        <div class="src-java">
+<div class="src-java">
+<pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">HelloWorld</span> {
+  <span style="color:#a57800">public</span> <span style="color:#268bd2">HelloWorld</span>();
+    <span style="color:#073642;font-weight:700">Code</span><span style="color:#859900">:</span>
+       <span style="color:#d33682">0</span><span style="color:#859900">:</span> aload_0       
+       <span style="color:#d33682">1</span>: invokespecial #<span style="color:#d33682">1</span> <span style="color:#93a1a1">// Method java/lang/Object."&lt;init>":()V</span>
+       <span style="color:#d33682">4</span>: return        
 
-		<pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">HelloWorld</span> {
-		  <span style="color:#a57800">public</span> <span style="color:#268bd2">HelloWorld</span>();
-		    <span style="color:#073642;font-weight:700">Code</span><span style="color:#859900">:</span>
-		       <span style="color:#d33682">0</span><span style="color:#859900">:</span> aload_0       
-		       1: invokespecial #1                  // Method java/lang/Object."<span style="color:#073642;font-weight:700">&lt;init></span>":()V
-		       4: return        
+  <span style="color:#a57800">public</span> <span style="color:#a57800">static</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">main</span>(<span style="color:#073642;font-weight:700">java.lang.String</span>[]);
+    <span style="color:#073642;font-weight:700">Code</span><span style="color:#859900">:</span>
+       <span style="color:#d33682">0</span><span style="color:#859900">:</span> getstatic     #<span style="color:#d33682">2</span> <span style="color:#93a1a1">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+       <span style="color:#d33682">3</span><span style="color:#859900">:</span> ldc           #<span style="color:#d33682">3</span> <span style="color:#93a1a1">// String Woohoo!</span>
+       <span style="color:#d33682">5</span>: invokevirtual #<span style="color:#d33682">4</span> 
+                  <span style="color:#93a1a1">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span>
+       <span style="color:#d33682">8</span><span style="color:#859900">:</span> <span style="color:#859900">return</span>        
+}
 
-		  <span style="color:#a57800">public</span> <span style="color:#a57800">static</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">main</span>(<span style="color:#073642;font-weight:700">java.lang.String</span>[]);
-		    <span style="color:#073642;font-weight:700">Code</span><span style="color:#859900">:</span>
-		       <span style="color:#d33682">0</span><span style="color:#859900">:</span> getstatic     #<span style="color:#d33682">2</span>                  <span style="color:#93a1a1">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
-		       <span style="color:#d33682">3</span><span style="color:#859900">:</span> ldc           #<span style="color:#d33682">3</span>                  <span style="color:#93a1a1">// String Woohoo!</span>
-		       5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)<span style="color:#073642;font-weight:700">V</span>
-		       <span style="color:#d33682">8</span><span style="color:#859900">:</span> <span style="color:#859900">return</span>        
-		}
-
-		</pre>
+</pre>
+</div>
 
         </div>
     </div>

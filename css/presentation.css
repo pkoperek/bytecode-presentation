@@ -106,13 +106,23 @@ a:focus {
 
 .slide{
     display: block;    
-    width: 900px;
+    width: 1100px;
     height: 700px;
+
+    /*border: 2px solid;*/
+}
+
+.slide-header {
+    font-size: 40px;    
+}
+
+.slide-content {
+    font-size: 25px;   
 }
 
 .step {
     position: relative;
-    width: 900px;
+    width: 1100px;
     padding: 40px;
     margin: 20px auto;
 
@@ -154,12 +164,28 @@ a:focus {
     top: 40%;
 }
 
+.ex-title  {
+    text-align: center;
+    position: relative;
+    top: 40%;
+}
+
 .title_author{
     font-family: Graziano;
     font-size: 25px;
     position: absolute;
     bottom: 40px;
     right: 5px;
+}
+
+.sh-cmd {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-family: monospace;    
+}
+
+.src-java {
+    font-family: monospace;    
 }
 
 .bytecode {
@@ -236,6 +262,22 @@ a:focus {
 
 .lv0_indent {
     margin-left: 60px;
+}
+
+#why .slide-header {
+    position: relative;
+    top: 25%;
+}
+
+#why .slide-content {
+    position: relative;
+    top: 25%;
+}
+
+#example-src .slide-content {
+    font-size: 30px;
+    position: relative;
+    top: 25%;
 }
 
 .hint {
