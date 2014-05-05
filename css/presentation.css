@@ -2,6 +2,11 @@
     based on impress.js demo
 */
 
+@font-face{
+    font-family: PressStart;
+    src: url('../img/PressStart2P.ttf');
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -98,8 +103,6 @@ a:focus {
     display: block;    
     width: 900px;
     height: 700px;
-
-
 }
 
 .step {
@@ -139,8 +142,9 @@ a:focus {
 
 .impress-enabled .step:not(.active){ opacity: 0 }
 
-.title {
+.presentation_title {
     text-align: center;
+    padding: 20px;
     position: absolute;
     top: 40%;
 }
@@ -152,8 +156,23 @@ a:focus {
     right: 5px;
 }
 
+.bytecode {
+    font-family: PressStart;
+    font-size: 30pt;
+    margin-right: 20px;
+}
+
+.manipulation {
+    display: inline-block;
+    -webkit-transform: translateY(-5px);
+    -moz-transform:    translateY(-5px);
+    -ms-transform:     translateY(-5px);
+    -o-transform:      translateY(-5px);
+    transform:         translateY(-5px);       
+}
+
 .aletter {
-     display: inline-block;
+    display: inline-block;
     -webkit-transform: translateY(10px);
     -moz-transform:    translateY(10px);
     -ms-transform:     translateY(10px);

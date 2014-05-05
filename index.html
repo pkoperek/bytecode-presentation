@@ -22,8 +22,108 @@
 
 <div id="impress">
 
-    <div id="intro" class="step slide">
-        <q>bytecode manipulation</q>
+    <div id="title" class="step slide" data-x="0" data-y="0">
+        <div class="presentation_title"><span class="bytecode">bytecode</span> <span class="manipulation">m<span class="aletter">a</span>nipu<span class="lletter">l</span>atio<span class="nletter">n</span></span></div>
+        <div class="title_author"><em>05.2014 / Pawel Koperek</em></div>
+    </div>
+
+    <div id="why" class="step" data-x="0" data-y="-1000">
+        <div class="slide-header" >why?</div>
+
+        <div class="slide-content">
+            <ul class="lv0_indent">
+                <li>tests (dynamic mocks/stubs)</li>
+                <li>aop (logging, security etc.)</li>
+                <li>new languages on jvm 
+                    (<a href="http://www.scala-lang.org/">scala</a>, 
+                    <a href="http://groovy.codehaus.org/">groovy</a>, 
+                    <a href="http://jruby.org/">jruby</a>)
+                </li>
+                <li>new cool tools (<a href="http://zeroturnaround.com/software/jrebel">jrebel</a>)
+            </ul>
+        </div>
+    </div>
+
+    <div id="example-title" class="step" data-x="0" data-y="-2000">
+        <div class="title">example</div>
+    </div>
+
+    <div id="example-src" class="step" data-x="0" data-y="-2000">
+        <div class="slide-content">
+            <div class="src-java">
+            <pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">HelloWorld</span> {
+                <span style="color:#a57800">public</span> <span style="color:#a57800">static</span> <span style="color:#073642;">void</span> <span style="color:#268bd2">main</span>(<span style="color:#073642">String</span>[] args) {
+                        <span style="color:#073642">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>Woohoo!<span style="color:#c60000">"</span></span>);
+                    }
+}
+                </pre>
+            </div>
+
+            <div class="sh-cmd">
+                javac HelloWorld.java
+            </div>
+        </div>
+    </div>
+   
+    <div id="example-bytecode" class="step" data-x="0" data-y="-2000">
+        <div class="slide-title sh-cmd">
+            javap -c HelloWorld
+        </div>
+
+        <div class="src-java">
+
+		<pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">HelloWorld</span> {
+		  <span style="color:#a57800">public</span> <span style="color:#268bd2">HelloWorld</span>();
+		    <span style="color:#073642;font-weight:700">Code</span><span style="color:#859900">:</span>
+		       <span style="color:#d33682">0</span><span style="color:#859900">:</span> aload_0       
+		       1: invokespecial #1                  // Method java/lang/Object."<span style="color:#073642;font-weight:700">&lt;init></span>":()V
+		       4: return        
+
+		  <span style="color:#a57800">public</span> <span style="color:#a57800">static</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">main</span>(<span style="color:#073642;font-weight:700">java.lang.String</span>[]);
+		    <span style="color:#073642;font-weight:700">Code</span><span style="color:#859900">:</span>
+		       <span style="color:#d33682">0</span><span style="color:#859900">:</span> getstatic     #<span style="color:#d33682">2</span>                  <span style="color:#93a1a1">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+		       <span style="color:#d33682">3</span><span style="color:#859900">:</span> ldc           #<span style="color:#d33682">3</span>                  <span style="color:#93a1a1">// String Woohoo!</span>
+		       5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)<span style="color:#073642;font-weight:700">V</span>
+		       <span style="color:#d33682">8</span><span style="color:#859900">:</span> <span style="color:#859900">return</span>        
+		}
+
+		</pre>
+
+        </div>
+    </div>
+    
+<!--        <div class="qoute">
+        "The Java Virtual Machine knows nothing of the Java programming language, only of a particular binary format, the class file format. A class file contains Java Virtual Machine instructions (or bytecodes) and a symbol table, as well as other ancillary information".
+        </div>
+-->
+ 
+<!--   
+        <div class="quote">
+        "The Java Virtual Machine is stack-oriented, with most operations taking one or more operands from the operand stack of the Java Virtual Machine's current frame or pushing results back onto the operand stack."
+        </div>
+-->
+
+<!-- 
+<div class="quote"> 
+    <div class="quote-text">
+        Each frame contains an array of variables known as its local variables. The length of the local variable array of a frame is determined at compile-time and supplied in the binary representation of a class or interface along with the code for the method associated with the frame. 
+    </div>
+    <div class="quote-source">
+        (JVM Spec 2.6.1. Local Variables)
+    </div>
+</div>    
+-->
+
+    <div id="sources" class="step" data-x="1000" data-y="0">
+        <div class="slide-header">
+            sources
+        </div>
+
+        <div class="slide-content">
+            <ul>
+                <li><a href="http://docs.oracle.com/javase/specs/jvms/se7/html/">JVM specification</a></li>
+            </ul>
+        </div>
     </div>
 
 </div>
