@@ -315,6 +315,49 @@ a:focus {
     left: 10%;
 }
 
+#mark-invokespecial {
+    width: 370px;
+    height: 70px;
+    top: 34%;
+    left: 10%;
+}
+
+#mark-return {
+    width: 200px;
+    height: 70px;
+    top: 40%;
+    left: 10%;
+}
+
+#mark-getstatic {
+    width: 370px;
+    height: 70px;
+    top: 64%;
+    left: 10%;
+}
+
+#mark-ldc {
+    width: 370px;
+    height: 70px;
+    top: 70%;
+    left: 10%;
+}
+
+#mark-invokevirtual {
+    width: 370px;
+    height: 70px;
+    top: 76%;
+    left: 10%;
+}
+
+#new-class {
+    position: absolute;
+    width: 550px;
+    height: 350px;
+    top: 25%;
+    left: 25%;
+}
+
 .quote {
     font-size: 20pt;
     display: block;

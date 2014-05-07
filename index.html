@@ -109,12 +109,45 @@
             loads "this" on stack
         </div>
     </div>
-   
+  
+    <div id="example-bytecode-invokespecial" class="step overlay" data-x="0" data-y="-2000">
+        <div id="mark-invokespecial" class="mark"></div>
+    </div>
+
+    <div id="example-bytecode-return" class="step overlay" data-x="0" data-y="-2000">
+        <div id="mark-return" class="mark"></div>
+    </div>
+
+    <div id="example-bytecode-getstatic" class="step overlay" data-x="0" data-y="-2000">
+        <div id="mark-getstatic" class="mark"></div>
+    </div>
+
+    <div id="example-bytecode-ldc" class="step overlay" data-x="0" data-y="-2000">
+        <div id="mark-ldc" class="mark"></div>
+    </div>
+
+    <div id="example-bytecode-invokevirtual" class="step overlay" data-x="0" data-y="-2000">
+        <div id="mark-invokevirtual" class="mark"></div>
+    </div>
+
     <div id="example-create-class" class="step slide" data-x="0" data-y="-3000">
         <div class="slide-header">create new class</div>
 
         <div class="slide-content">
-        <!-- put formatted NewClass.java here-->
+            <div id="new-class" class="src-java">
+<pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">NewClass</span> {
+    <span style="color:#a57800">private</span> <span style="color:#073642;font-weight:700">int</span> field;
+
+    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">int</span> <span style="color:#268bd2">getField</span>() {
+        <span style="color:#859900">return</span> field;
+    }
+
+    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">setField</span>(<span style="color:#073642;font-weight:700">int</span> field) {
+        <span style="color:#268bd2">this</span><span style="color:#859900">.</span>field <span style="color:#859900">=</span> field;
+    }
+}
+</pre>
+            </div>
         </div> 
     </div>
 
