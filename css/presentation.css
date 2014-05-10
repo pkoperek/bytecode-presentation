@@ -112,8 +112,6 @@ a:focus {
     display: block;    
     width: 1100px;
     height: 700px;
-
-    /*border: 2px solid;*/
 }
 
 .slide-header {
@@ -379,6 +377,14 @@ a:focus {
 #mark-invokevirtual .mark {
     width: 370px;
     height: 70px;
+}
+
+#class-to-intercept {
+    position: absolute;
+    width: 550px;
+    height: 350px;
+    top: 25%;
+    left: 25%;
 }
 
 #new-class {

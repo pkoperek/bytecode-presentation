@@ -27,7 +27,7 @@
             <span class="bytecode">bytecode</span> <span class="manipulation">m<span class="aletter">a</span>nipu<span class="lletter">l</span>atio<span class="nletter">n</span></span>
         </div>
         <div class="right">
-            <span>... with ASM and cglib</span> 
+            <span>... with cglib and ASM</span> 
         </div>
         <div class="title_author"><span class="date">05.2014</span><span class="slash">/</span><span class="author">Pawel Koperek</span></div>
     </div>
@@ -190,12 +190,33 @@
         </div>
     </div>
 
-    <div id="example-create-class" class="step slide" data-x="0" data-y="-3000">
+    <div id="example-intercept" class="step slide" data-x="0" data-y="-3000">
+        <div class="slide-header">intercept a method</div>
+
+        <div class="slide-content">
+            <div id="class-to-intercept" class="src-java">	
+<pre style="color:#586e75"><span style="color:#a57800">class</span> <span style="color:#268bd2">ClassToBeIntercepted</span> {
+
+    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">toCallOne</span>() {
+        <span style="color:#073642;font-weight:700">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>toCallOne<span style="color:#c60000">"</span></span>);
+    }
+
+    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">toCallTwo</span>() {
+        <span style="color:#073642;font-weight:700">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>toCallTwo<span style="color:#c60000">"</span></span>);
+    }
+}
+</pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="example-create-class" class="step slide" data-x="0" data-y="-4000">
         <div class="slide-header">create new class</div>
 
         <div class="slide-content">
             <div id="new-class" class="src-java">
-<pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">NewClass</span> {
+<pre style="color:#586e75">
+<span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">NewClass</span> {
     <span style="color:#a57800">private</span> <span style="color:#073642;font-weight:700">int</span> field;
 
     <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">int</span> <span style="color:#268bd2">getField</span>() {
