@@ -302,6 +302,12 @@ a:focus {
     opacity: 0.25;
 }
 
+#hex {
+    display: block;
+    font-family: monospace;
+    font-size: 20px;
+}
+
 #mark-default-ctor {
     width: 100%;
     height: 200px;
