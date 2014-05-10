@@ -14,18 +14,6 @@ import static org.objectweb.asm.Opcodes.*;
  * ACC_SUPER - http://stackoverflow.com/questions/8949933/what-is-the-purpose-of-the-acc-super-access-flag-on-java-class-files
  */
 
-public class CreateClass {
-    public static void main(String[] args) throws IOException {
-        byte[] bytecode = generateByteCode();
-        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream("NewClass.class"));
-        bufferedOutputStream.write(bytecode);
-        bufferedOutputStream.close();
-    }
-
-    private static byte[] generateByteCode() {
-        ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-        cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, "NewClass", null, "java/lang/Object", null);
-
         /**
          * FieldVisitor visitField(int access,
          *                         String name,
@@ -39,11 +27,13 @@ public class CreateClass {
          *      name - the field's name.
          *      desc - the field's descriptor (see Type).
          *      signature - the field's signature. May be null if the field's type does not use generic types.
-         *      value - the field's initial value. This parameter, which may be null if the field does not have an initial value, must be an Integer, a Float, a Long, a Double or a String (for int, float, long or String fields respectively). This parameter is only used for static fields. Its value is ignored for non static fields, which must be initialized through bytecode instructions in constructors or methods.
+         *      value - the field's initial value. This parameter, which may be null if the field does not 
+         *              have an initial value, must be an Integer, a Float, a Long, a Double or a String (for 
+         *              int, float, long or String fields respectively). This parameter is only used for static 
+         *              fields. Its value is ignored for non static fields, which must be initialized through 
+         *              bytecode instructions in constructors or methods.
          */
-        FieldVisitor fv = cw.visitField(ACC_PRIVATE, "field", "I", null, null);
-        fv.visitEnd();
-
+ 
         /**
          * MethodVisitor visitMethod(int access,
          *                           String name,
@@ -60,14 +50,23 @@ public class CreateClass {
          *      signature - the method's signature. May be null if the method parameters, return type and exceptions do not use generic types.
          *      exceptions - the internal names of the method's exception classes (see getInternalName). May be null.
          */
+
+        // ASM ignores the values when COMPUTE_MAXS is
+        // used - however You still need to invoke this method
+ 
+public class CreateClass {
+
+    private static byte[] generateByteCode() {
+        ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+        cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, "NewClass", null, "java/lang/Object", null);
+
+        FieldVisitor fv = cw.visitField(ACC_PRIVATE, "field", "I", null, null);
+        fv.visitEnd();
         MethodVisitor constructorVisitor = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
         constructorVisitor.visitCode();
         constructorVisitor.visitVarInsn(ALOAD, 0);
         constructorVisitor.visitMethodInsn(INVOKESPECIAL, "java/lang/Object", "<init>", "()V");
         constructorVisitor.visitInsn(RETURN);
-
-        // ASM ignores the values when COMPUTE_MAXS is
-        // used - however You still need to invoke this method
         constructorVisitor.visitMaxs(0, 0);
         constructorVisitor.visitEnd();
 
@@ -92,4 +91,12 @@ public class CreateClass {
 
         return cw.toByteArray();
     }
+
+    public static void main(String[] args) throws IOException {
+        byte[] bytecode = generateByteCode();
+        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream("NewClass.class"));
+        bufferedOutputStream.write(bytecode);
+        bufferedOutputStream.close();
+    }
+
 }
