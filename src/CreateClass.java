@@ -6,6 +6,14 @@ import java.io.*;
 
 import static org.objectweb.asm.Opcodes.*;
 
+/**
+ * Creates the NewClass using ASM.
+ * 
+ * COMPUTE_MAXS - compute operand stack size.
+ * The ACC_SUPER flag indicates which of two alternative semantics is to be expressed by the invokespecial instruction (§invokespecial) if it appears in this class. Compilers to the instruction set of the Java Virtual Machine should set the ACC_SUPER flag.
+ * ACC_SUPER - http://stackoverflow.com/questions/8949933/what-is-the-purpose-of-the-acc-super-access-flag-on-java-class-files
+ */
+
 public class CreateClass {
     public static void main(String[] args) throws IOException {
         byte[] bytecode = generateByteCode();
@@ -18,9 +26,40 @@ public class CreateClass {
         ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
         cw.visit(V1_7, ACC_PUBLIC + ACC_SUPER, "NewClass", null, "java/lang/Object", null);
 
+        /**
+         * FieldVisitor visitField(int access,
+         *                         String name,
+         *                         String desc,
+         *                         String signature,
+         *                         Object value)
+         *
+         * Visits a field of the class.
+         * Parameters:
+         *      access - the field's access flags (see Opcodes). This parameter also indicates if the field is synthetic and/or deprecated.
+         *      name - the field's name.
+         *      desc - the field's descriptor (see Type).
+         *      signature - the field's signature. May be null if the field's type does not use generic types.
+         *      value - the field's initial value. This parameter, which may be null if the field does not have an initial value, must be an Integer, a Float, a Long, a Double or a String (for int, float, long or String fields respectively). This parameter is only used for static fields. Its value is ignored for non static fields, which must be initialized through bytecode instructions in constructors or methods.
+         */
         FieldVisitor fv = cw.visitField(ACC_PRIVATE, "field", "I", null, null);
         fv.visitEnd();
 
+        /**
+         * MethodVisitor visitMethod(int access,
+         *                           String name,
+         *                           String desc,
+         *                           String signature,
+         *                           String[] exceptions)
+         * 
+         * Visits a method of the class. This method must return a new MethodVisitor instance (or null) each time it is called, i.e., it should not return a previously returned visitor.
+         * 
+         * Parameters:
+         *      access - the method's access flags (see Opcodes). This parameter also indicates if the method is synthetic and/or deprecated.
+         *      name - the method's name.
+         *      desc - the method's descriptor (see Type).
+         *      signature - the method's signature. May be null if the method parameters, return type and exceptions do not use generic types.
+         *      exceptions - the internal names of the method's exception classes (see getInternalName). May be null.
+         */
         MethodVisitor constructorVisitor = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
         constructorVisitor.visitCode();
         constructorVisitor.visitVarInsn(ALOAD, 0);
