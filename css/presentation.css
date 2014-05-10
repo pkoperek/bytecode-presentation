@@ -278,6 +278,25 @@ a:focus {
     margin-left: 60px;
 }
 
+.mark {
+    display: block;
+    background-image: url("../img/mark.png");
+    background-size: 100% 100%;
+    opacity: 0.25;
+    left: 10%;
+    position: relative;
+}
+
+.comment {
+    font-size: 18pt;
+    display: block;
+    float: left;
+    width: 300px;
+    left: -25%;
+    color: black;
+    position: relative;
+}
+
 #why .slide-header {
     position: relative;
     top: 25%;
@@ -294,14 +313,6 @@ a:focus {
     top: 25%;
 }
 
-.mark {
-    display: block;
-    background-image: url("../img/mark.png");
-    background-size: 100% 100%;
-    position: relative;
-    opacity: 0.25;
-}
-
 #hex {
     display: block;
     font-family: monospace;
@@ -315,45 +326,63 @@ a:focus {
 }
 
 #mark-aload0 {
+    position: relative;
+    top: 28%;
+} 
+
+#mark-aload0 .mark {
     width: 200px;
-    height: 100px;
-    top: 25%;
-    left: 10%;
+    height: 70px;
 }
 
 #mark-invokespecial {
+    position: relative;
+    top: 34%;
+}
+
+#mark-invokespecial .mark {
     width: 370px;
     height: 70px;
-    top: 34%;
-    left: 10%;
 }
 
 #mark-return {
+    top: 40%;
+    position: relative;
+}
+
+#mark-return .mark {
     width: 200px;
     height: 70px;
-    top: 40%;
-    left: 10%;
 }
 
 #mark-getstatic {
+    top: 64%;
+    position: relative;
+}
+
+#mark-getstatic .mark {
     width: 370px;
     height: 70px;
-    top: 64%;
-    left: 10%;
 }
 
 #mark-ldc {
+    top: 70%;
+    position: relative;
+}
+
+#mark-ldc .mark {
     width: 370px;
     height: 70px;
-    top: 70%;
-    left: 10%;
 }
 
 #mark-invokevirtual {
+    top: 76%;
+    position: relative;
+}
+
+#mark-invokevirtual .mark {
     width: 370px;
     height: 70px;
-    top: 76%;
-    left: 10%;
 }
 
 #new-class {
@@ -362,16 +391,6 @@ a:focus {
     height: 350px;
     top: 25%;
     left: 25%;
-}
-
-.quote {
-    font-size: 20pt;
-    display: block;
-    position: absolute;
-    width: 500px;
-    right: 10%;
-    top: 25%;
-    color: black;
 }
 
 .hint {

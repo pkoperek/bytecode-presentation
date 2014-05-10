@@ -134,33 +134,59 @@
     </div>
  
     <div id="example-bytecode-aload0" class="step overlay" data-x="0" data-y="-2000">
-        <div id="mark-aload0" class="mark"></div> 
-
-        <div id="frame-quote" class="quote">
-            loads "this" on stack
-        </div>
+        <div id="mark-aload0">
+            <div class="comment">
+                pushes "this" on stack
+            </div>
+ 
+            <div class="mark"></div> 
+       </div>
     </div>
  
-    <!-- todo add "quotes" --> 
-    <!-- todo rename "quote" to smth more appropriate --> 
     <div id="example-bytecode-invokespecial" class="step overlay" data-x="0" data-y="-2000">
-        <div id="mark-invokespecial" class="mark"></div>
+        <div id="mark-invokespecial">
+            <div class="comment">
+             #1 refers to <em>Constant Pool</em> <br><br>
+             invokes a "special" method (constructors, initialization blocks, private methods) 
+            </div>
+            <div class="mark"></div>
+        </div>
     </div>
 
     <div id="example-bytecode-return" class="step overlay" data-x="0" data-y="-2000">
-        <div id="mark-return" class="mark"></div>
+        <div id="mark-return">
+            <div class="comment">
+                explicit return
+            </div>
+            <div class="mark"></div>
+        </div>
     </div>
 
     <div id="example-bytecode-getstatic" class="step overlay" data-x="0" data-y="-2000">
-        <div id="mark-getstatic" class="mark"></div>
+        <div id="mark-getstatic">
+            <div class="comment">
+                retrieves value of static field and pushes on stack 
+            </div>
+            <div class="mark"></div>
+        </div>
     </div>
 
     <div id="example-bytecode-ldc" class="step overlay" data-x="0" data-y="-2000">
-        <div id="mark-ldc" class="mark"></div>
+        <div id="mark-ldc">
+            <div class="comment">
+                pushes constant from <em>Constant Pool</em> on stack
+            </div>
+            <div class="mark"></div>
+        </div>
     </div>
 
     <div id="example-bytecode-invokevirtual" class="step overlay" data-x="0" data-y="-2000">
-        <div id="mark-invokevirtual" class="mark"></div>
+        <div id="mark-invokevirtual">
+            <div class="comment">
+                invokes a virtual method (considers method overriding)
+            </div>
+            <div class="mark"></div>
+        </div>
     </div>
 
     <div id="example-create-class" class="step slide" data-x="0" data-y="-3000">
