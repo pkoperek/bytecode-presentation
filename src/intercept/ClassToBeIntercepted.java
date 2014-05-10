@@ -1,4 +1,4 @@
-class ClassToBeProxied {
+class ClassToBeIntercepted {
 
     public void toCallOne() {
         System.out.println("toCallOne");
@@ -9,8 +9,8 @@ class ClassToBeProxied {
     }
 
     public static void main(String[] args) {
-        ClassToBeProxied classToBeProxied = new ClassToBeProxied();
-        classToBeProxied.toCallOne();
-        classToBeProxied.toCallTwo();
+        ClassToBeIntercepted classToBeIntercepted = new ClassToBeIntercepted();
+        classToBeIntercepted.toCallOne();
+        classToBeIntercepted.toCallTwo();
     }
 }
