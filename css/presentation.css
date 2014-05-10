@@ -297,12 +297,7 @@ a:focus {
     position: relative;
 }
 
-#why .slide-header {
-    position: relative;
-    top: 25%;
-}
-
-#why .slide-content {
+.vcenter {
     position: relative;
     top: 25%;
 }

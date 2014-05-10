@@ -33,21 +33,22 @@
     </div>
 
     <div id="why" class="step slide" data-x="0" data-y="-1000">
-        <div class="slide-header">why?</div>
+        <div class="vcenter">
+            <div class="slide-header">why?</div>
 
-        <div class="slide-content">
-            <ul class="lv0_indent">
-                <li>tests (<a href="https://code.google.com/p/mockito/">mockito</a>, <a href="http://pitest.org/">pitest</a>)</li>
-                <li>static analysis</li>
-                <li>aop (logging, security etc.)</li>
-                <li>new languages on jvm 
-                    (<a href="http://www.scala-lang.org/">scala</a>, 
-                    <a href="http://groovy.codehaus.org/">groovy</a>, 
-                    <a href="http://jruby.org/">jruby</a>)
-                </li>
-                <li>new cool tools (<a href="http://zeroturnaround.com/software/jrebel">jrebel</a>)
-
-            </ul>
+            <div class="slide-content">
+                <ul class="lv0_indent">
+                    <li>tests (<a href="https://code.google.com/p/mockito/">mockito</a>, <a href="http://pitest.org/">pitest</a>)</li>
+                    <li>static analysis</li>
+                    <li>aop (logging, security etc.)</li>
+                    <li>new languages on jvm 
+                        (<a href="http://www.scala-lang.org/">scala</a>, 
+                        <a href="http://groovy.codehaus.org/">groovy</a>, 
+                        <a href="http://jruby.org/">jruby</a>)
+                    </li>
+                    <li>new cool tools (<a href="http://zeroturnaround.com/software/jrebel">jrebel</a>)
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -210,6 +211,7 @@
         </div> 
     </div>
 
+    <!-- todo: change example title to smth different --> 
     <!-- explain ASM api -->
     <!-- -->
     <!-- now we go to VIM -->
@@ -245,17 +247,18 @@
 -->
 
     <div id="good-practises" class="step slide" data-x="1000" data-y="-2000">
-        <!-- todo: align in the center-->
-        <div class="slide-header">
-            good practices
-        </div>
+        <div class="vcenter">
+            <div class="slide-header">
+                good practices
+            </div>
 
-        <div class="slide-content">
-            <ul class="lv0_indent">
-                <li>when possible - use higher level libraries (<em>cglib</em>)</li>
-                <li>don't write all of ASM code by yourself: write it in pure Java and use <em>javap</em> or <em>ASMifier</em></li>
-                <li>write as much as possible in Java and only invoke methods in instrumentation code</li>
-            </ul>
+            <div class="slide-content">
+                <ul class="lv0_indent">
+                    <li>when possible - use higher level libraries (<em>cglib</em>)</li>
+                    <li>write as much as possible in Java and only invoke methods in instrumentation code</li>
+                    <li>don't write all of ASM code by yourself: write it in pure Java and use <em>javap</em> or <em>ASMifier</em></li>
+                </ul>
+            </div>
         </div>
     </div>
 
