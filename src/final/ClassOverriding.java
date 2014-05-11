@@ -16,7 +16,7 @@ public class ClassOverriding {
         redefineClass("FinalClass", classWriter.toByteArray());
     }
 
-    private void redefineClass(String classToRedefine, byte[] newBytecode) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    private void redefineClass(String classToRedefine, byte[] newBytecode) throws Exception { 
         Object[] args = new Object[]{classToRedefine, newBytecode, 0, newBytecode.length};
         Class classLoaderClass = Class.forName("java.lang.ClassLoader");
         Method defineClass = classLoaderClass.getDeclaredMethod("defineClass",
