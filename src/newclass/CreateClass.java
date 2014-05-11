@@ -51,6 +51,23 @@ import static org.objectweb.asm.Opcodes.*;
          *      exceptions - the internal names of the method's exception classes (see getInternalName). May be null.
          */
 
+        /**
+         * public void visitMethodInsn(int opcode,
+         *                             String owner,
+         *                             String name,
+         *                             String desc,
+         *                             boolean itf)
+         *
+         * Visits a method instruction. A method instruction is an instruction that invokes a method.
+         * 
+         * Parameters:
+         *      opcode - the opcode of the type instruction to be visited. This opcode is either INVOKEVIRTUAL, INVOKESPECIAL, INVOKESTATIC or INVOKEINTERFACE.
+         *      owner - the internal name of the method's owner class (see getInternalName).
+         *      name - the method's name.
+         *      desc - the method's descriptor (see Type).
+         *      itf - if the method's owner class is an interface. 
+         */
+
         // ASM ignores the values when COMPUTE_MAXS is
         // used - however You still need to invoke this method
  
@@ -65,7 +82,7 @@ public class CreateClass {
         MethodVisitor constructorVisitor = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
         constructorVisitor.visitCode();
         constructorVisitor.visitVarInsn(ALOAD, 0);
-        constructorVisitor.visitMethodInsn(INVOKESPECIAL, "java/lang/Object", "<init>", "()V");
+        constructorVisitor.visitMethodInsn(INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false);
         constructorVisitor.visitInsn(RETURN);
         constructorVisitor.visitMaxs(0, 0);
         constructorVisitor.visitEnd();
