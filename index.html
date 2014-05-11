@@ -52,11 +52,8 @@
         </div>
     </div>
 
-    <div id="example-title" class="step slide" data-x="0" data-y="-2000">
-        <div class="ex-title">example</div>
-    </div>
-
     <div id="example-src" class="step slide" data-x="0" data-y="-2000">
+        <div class="slide-header">bytecode sample</div>
         <div class="slide-content">
             <div class="src-java">
 <pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">HelloWorld</span> {
@@ -231,41 +228,6 @@
             </div>
         </div> 
     </div>
-
-    <!-- todo: change example title to smth different --> 
-    <!-- explain ASM api -->
-    <!-- -->
-    <!-- now we go to VIM -->
-    <!-- explain the code ... -->
-    <!-- ... and it is not so clear why do we need to do all that stuff :) -->
-    <!-- writing code in ASM is hard and it is easy to mess it up --> 
-    <!-- this is where cglib comes in hand -->
-    <!-- example with intercepting a single method ... or just intercepting a method -->
-      
-    <!-- ok - this is kind of better ... but lets try to do it at runtime! -->
-    <!-- example with hacking system class loader  and removing final and private -->
-    
-<!--        <div class="qoute">
-        "The Java Virtual Machine knows nothing of the Java programming language, only of a particular binary format, the class file format. A class file contains Java Virtual Machine instructions (or bytecodes) and a symbol table, as well as other ancillary information".
-        </div>
--->
- 
-<!--   
-        <div class="quote">
-        "The Java Virtual Machine is stack-oriented, with most operations taking one or more operands from the operand stack of the Java Virtual Machine's current frame or pushing results back onto the operand stack."
-        </div>
--->
-
-<!-- 
-<div class="quote"> 
-    <div class="quote-text">
-        Each frame contains an array of variables known as its local variables. The length of the local variable array of a frame is determined at compile-time and supplied in the binary representation of a class or interface along with the code for the method associated with the frame. 
-    </div>
-    <div class="quote-source">
-        (JVM Spec 2.6.1. Local Variables)
-    </div>
-</div>    
--->
 
     <div id="good-practises" class="step slide" data-x="1000" data-y="-2000">
         <div class="vcenter">
