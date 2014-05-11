@@ -300,16 +300,16 @@ a:focus {
     top: 25%;
 }
 
-#example-src .slide-content {
-    font-size: 30px;
-    position: relative;
-    top: 25%;
-}
-
 #hex {
     display: block;
     font-family: monospace;
     font-size: 20px;
+}
+
+#example-src .sh-cmd {
+    font-size: 20pt;
+    position: relative;
+    top: 50%; 
 }
 
 #mark-default-ctor {
@@ -385,6 +385,22 @@ a:focus {
     height: 350px;
     top: 25%;
     left: 25%;
+}
+
+#bytecode-sample {
+    position: absolute;
+    width: 550px;
+    height: 350px;
+    top: 25%;
+    left: 25%;
+}
+
+#final-class {
+    position: absolute;
+    width: 700px;
+    height: 350px;
+    top: 25%;
+    left: 200px;
 }
 
 #new-class {

@@ -54,17 +54,19 @@
 
     <div id="example-src" class="step slide" data-x="0" data-y="-2000">
         <div class="slide-header">bytecode sample</div>
-        <div class="slide-content">
+        <div id="bytecode-sample" class="slide-content">
             <div class="src-java">
-<pre style="color:#586e75"><span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">HelloWorld</span> {
+<pre style="color:#586e75">
+<span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">HelloWorld</span> {
     <span style="color:#a57800">public</span> <span style="color:#a57800">static</span> <span style="color:#073642;">void</span> <span style="color:#268bd2">main</span>(<span style="color:#073642">String</span>[] args) {
         <span style="color:#073642">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>Woohoo!<span style="color:#c60000">"</span></span>);
     }
-}</pre>
+}
+</pre>
             </div>
-            <div class="sh-cmd">
-                $ javac HelloWorld.java
-            </div>
+        </div>
+        <div class="sh-cmd">
+         $ javac HelloWorld.java
         </div>
     </div>
   
@@ -229,7 +231,28 @@
         </div> 
     </div>
 
-    <div id="good-practises" class="step slide" data-x="1000" data-y="-2000">
+    <div id="example-final" class="step slide" data-x="0" data-y="-5000">
+        <div class="slide-header">override a private method in a final class</div>
+        <div class="slide-content">
+            <div id="final-class" class="src-java">
+<pre style="color:#586e75">
+<span style="color:#a57800">public</span> <span style="color:#a57800">final</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">FinalClass</span> {
+
+    <span style="color:#a57800">private</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">hardToCallMe</span>() {
+        <span style="color:#073642;font-weight:700">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>inside hardToCallMe<span style="color:#c60000">"</span></span>);
+    }
+
+    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">callMe</span>() {
+        <span style="color:#073642;font-weight:700">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>inside callMe<span style="color:#c60000">"</span></span>);
+        hardToCallMe(); 
+    }
+}
+</pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="good-practises" class="step slide" data-x="0" data-y="-6000">
         <div class="vcenter">
             <div class="slide-header">
                 good practices
@@ -238,14 +261,14 @@
             <div class="slide-content">
                 <ul class="lv0_indent">
                     <li>when possible - use higher level libraries (<em>cglib</em>)</li>
-                    <li>write as much as possible in Java and only invoke methods in instrumentation code</li>
+                    <li>write as much as possible in Java (invoke methods in instrumentation code only)</li>
                     <li>don't write all of ASM code by yourself: write it in pure Java and use <em>javap</em> or <em>ASMifier</em></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div id="sources" class="step slide" data-x="1000" data-y="-1000">
+    <div id="sources" class="step slide" data-x="0" data-y="-7000">
         <div class="vcenter">
             <div class="slide-header">
                 sources
@@ -262,7 +285,7 @@
         </div>
     </div>
 
-    <div id="thanks" class="step slide" data-x="1000" data-y="0">
+    <div id="thanks" class="step slide" data-x="0" data-y="-8000">
         <div class="ex-title">thanks!</div>
     </div>
 
