@@ -300,6 +300,15 @@ a:focus {
     top: 25%;
 }
 
+#stacks-diagram-ctr {
+    display: block;
+    width: 900px;
+    height: 700px;
+    background-image: url("../img/stacks-diagram.png");
+    background-size: 100% 100%;
+    opacity: 1; 
+}
+
 #hex {
     display: block;
     font-family: monospace;
