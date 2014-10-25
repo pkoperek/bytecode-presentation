@@ -1,0 +1,113 @@
+1. hi, i would like to share some stuff which i found very helpful recently. today's presentation is about bytecode manipulation
+2. first of all why should you get interested in how jvm works internally, how exactly java bytecode is processed or how to manipulate it? there are couple good reasons: 
+   first of all - probably most of us used it at some point, maybe in fact all the time (in mock libraries, or languages like scala/clojure),
+   secondly it lets you really do almost anything in JVM and makes new programming concepts possible/easier to implement (eg aop); can really help you with tasks like profiliing
+3. the best way to learn about it is just to see an example
+4. we write a very short java class... and compile it .. obviously bytecode is the the thing whichc lands inside .class file (with some other extra things -> but this is a topic for a separate presentation)
+5. after that we try to see the results of compilation
+6. looking at raw classes is not really helpful
+7. thankfully jvm comes with a tool which changes opcodes to mnemonics ...
+8. lets see an example. first of all -> notice that a default constructor was added -> you need to remember that this is done at compilation level. 
+   it will come in hand when we will try to create our own class
+8. ok - lets see what actually happens in the methods... the aload_0 looks quite cryptic... what does it exactly? the short version is that aload_0 loads the reference of current object (this in Java) 
+to stack. the long version: aload is an instruction to load a reference from local variable and put it on operand stack. you need to give aload a single parameter which is actually an index in an array. when a method is invoked, a new frame is allocated on thread's execution stack. the frame contains an array of all parameters, local variables, required for method to run. for a method execution -> the first implicitly passed parameter is the reference to current object. so aload_0 is just a short hand version of putting an int to the operand stack and then executing aload.
+
+-> invokespecial -> instruction for invoking a "special" method (initialization block, constructor, private method)
+-> #1 - this is a reference to constant pool (constant pool names actually two things -> first -> part of class file and secondly a data structure in memory; contains strings, refereces to other java classestheir methods, their names, basically these are the data which can be used to connect the class with other stuff which is already loaded to memory)
+-> invokespecial/invokevirtual - difference
+-> explicit return from method
+
+the next method is simpler because we already know a lot of stuff:
+-> getstatic -> loads a static reference on the operand stack
+-> ldc -> loads a string reference from constant pool to the operand stack
+-> invokevirtual -> fire  the method
+
+Thiat constant pool thing might be quite interesting: lets try to see it:
+$ javac HelloWorld.java
+$ javap -c -verbose HelloWorld
+
+Armed with that knowledge we can try to do some interesting things with bytecode:
+Lets start with something simple: intercepting method's execution
+Say we would like to change the behavior of a specific method (or just all methods meeting specific condition)
+I've cheated a bit - and prepared the code upfront :)
+First - lets see how it behaves without modification
+
+$ javac ClassToBeIntercepted.java
+$ java ClassToBeIntercepted
+
+Now the interception code: for this purpose we'll use CGLib. It is a high level bytecode manipulation library. 
+The API is quite simple: we create an Enhancer object, then we feed it with info about the class we want to enhance/extend, 
+and define a callback which is going to be called when a method of wrapped class is invoked. Finally: we create an instance 
+of the extended class - and we can use it as the object of base class.
+
+$ javac -cp cglib-nodep-3.1.jar:. CGLibIntercepting.java
+$ java -cp cglib-nodep-3.1.jar:. CGLibIntercepting
+
+Actually underneath cglib creates a completely new class, which just "extends" the enhanced one, and overrides the methods 
+of parent class. Overridden methods just call the callback we specified.
+To do all of that cglib in fact uses another interesting library - ASM (actually it just wraps it and makes the api easier to use).
+There are also limitations here: most notably we can't override final or private methods.(on the other hand java dynamic proxies can make only proxies based on interfaces)
+
+Lets try to use a more powerful library - ASM. First lets just create a new class - it shouldn't be too complicated..
+This time we're creating the class which gets persisted on disk -> for further reuse (this proves that we're actually 
+creating working bytecode, right?)
+
+(explain the code)
+
+$ rm NewClass.java 
+(so noone can say we're cheating:))
+
+$ javac -cp asm-all-5.0.2.jar CreateClass.java
+$ java -cp asm-all-5.0.2.jar:. CreateClass
+$ ls
+
+Ok - we've got the .class file ... 
+Lets try to use it...
+I've prepared a small class which does that:
+$ cat UseNewClass.java
+
+$ javac UseNewClass.java 
+$ java UseNewClass
+
+Nothing spectacular... but as you can see in this example we had more control
+Lets try to make something more advanced: redefine a private method in a final class :)
+This requires a bit of "hacking" the JVM...
+
+Lets start with the class which we want to change: we have a single private method. Lets see how it looks like when we don't do anything. 
+We have also a piece of code which uses this final class:
+$ cat AppUsingFinalClass.java
+$ javac FinalClass.java
+$ java AppUsingFinalClass
+-> see two lines
+
+Ok there are two lines ... and i don't like the idea that the private method implementation and i wan't to get rid of it...
+The simplest way to do that is just replace the method with an empty implementation.
+
+Unfortunately - we need to deliver somehow the code which changes the bytecode - so we have to alter the "application". We could also do this without changing the apps code. You can also write a
+so called agent (pretty much it just implements a certain method which gets executed before main method)... but lets not mix those two topics. 
+
+$ cat AppUsingFinalClassV2.java
+
+You can see that the change is really simple.
+Lets see how the change is being done...
+
+$ vim ClassOverriding.java 
+
+1. Ok - first we read the bytecode of the class we want to change.. nothing special.
+2. Here ASM comes onto stage - we want to anlyze this stream of bytecode, and later write it to a bytearray
+3. Note that we have a wrapper for ClassWriter. When classReader goes over the class and reads various 
+properties it executes the methods of passed visitor (so we can intercept all calls to writer and
+change contents).
+4. Lets see what happens inside the visitor. We actually do a very simple thing: each time the reader sees a method we want to know about it. In
+case the method has "hardToCallMe" name we just change the body for a single return instruction.
+5. The last bit -> inserting the new bytecode to classloader is a bit hacky. There are couple ways to do that. You can create your own classloader and override the way it looksup 
+classes -> but then you limit the scope of your change. Using the "defineClass" method from systemclassloader makes the change visible to pretty much everything. 
+
+$ javac -cp asm-all-5.0.2.jar ClassOverriding.java
+$ javac AppUsingFinalClassV2.java 
+$ java -cp asm-all-5.0.2.jar:. AppUsingFinalClassV2
+-> there is only one line - woohhoo
+
+additional slides
+-> constant pool
+-> jvm structure
